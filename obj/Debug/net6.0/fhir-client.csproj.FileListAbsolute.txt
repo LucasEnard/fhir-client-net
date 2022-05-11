@@ -1,0 +1,15 @@
+/Users/lenard/Documents/GitHub/fhir-client/bin/Debug/net6.0/fhir-client
+/Users/lenard/Documents/GitHub/fhir-client/bin/Debug/net6.0/fhir-client.deps.json
+/Users/lenard/Documents/GitHub/fhir-client/bin/Debug/net6.0/fhir-client.runtimeconfig.json
+/Users/lenard/Documents/GitHub/fhir-client/bin/Debug/net6.0/fhir-client.dll
+/Users/lenard/Documents/GitHub/fhir-client/bin/Debug/net6.0/fhir-client.pdb
+/Users/lenard/Documents/GitHub/fhir-client/obj/Debug/net6.0/fhir-client.csproj.AssemblyReference.cache
+/Users/lenard/Documents/GitHub/fhir-client/obj/Debug/net6.0/fhir-client.GeneratedMSBuildEditorConfig.editorconfig
+/Users/lenard/Documents/GitHub/fhir-client/obj/Debug/net6.0/fhir-client.AssemblyInfoInputs.cache
+/Users/lenard/Documents/GitHub/fhir-client/obj/Debug/net6.0/fhir-client.AssemblyInfo.cs
+/Users/lenard/Documents/GitHub/fhir-client/obj/Debug/net6.0/fhir-client.csproj.CoreCompileInputs.cache
+/Users/lenard/Documents/GitHub/fhir-client/obj/Debug/net6.0/fhir-client.dll
+/Users/lenard/Documents/GitHub/fhir-client/obj/Debug/net6.0/refint/fhir-client.dll
+/Users/lenard/Documents/GitHub/fhir-client/obj/Debug/net6.0/fhir-client.pdb
+/Users/lenard/Documents/GitHub/fhir-client/obj/Debug/net6.0/fhir-client.genruntimeconfig.cache
+/Users/lenard/Documents/GitHub/fhir-client/obj/Debug/net6.0/ref/fhir-client.dll
