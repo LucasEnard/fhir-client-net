@@ -13,3 +13,14 @@
 /Users/lenard/Documents/GitHub/fhir-client/obj/Debug/net6.0/fhir-client.pdb
 /Users/lenard/Documents/GitHub/fhir-client/obj/Debug/net6.0/fhir-client.genruntimeconfig.cache
 /Users/lenard/Documents/GitHub/fhir-client/obj/Debug/net6.0/ref/fhir-client.dll
+/Users/lenard/Documents/GitHub/fhir-client/bin/Debug/net6.0/Firely.Fhir.Packages.dll
+/Users/lenard/Documents/GitHub/fhir-client/bin/Debug/net6.0/Hl7.Fhir.ElementModel.dll
+/Users/lenard/Documents/GitHub/fhir-client/bin/Debug/net6.0/Hl7.Fhir.R4.Core.dll
+/Users/lenard/Documents/GitHub/fhir-client/bin/Debug/net6.0/Hl7.Fhir.Serialization.dll
+/Users/lenard/Documents/GitHub/fhir-client/bin/Debug/net6.0/Hl7.Fhir.Support.dll
+/Users/lenard/Documents/GitHub/fhir-client/bin/Debug/net6.0/Hl7.Fhir.Support.Poco.dll
+/Users/lenard/Documents/GitHub/fhir-client/bin/Debug/net6.0/Hl7.FhirPath.dll
+/Users/lenard/Documents/GitHub/fhir-client/bin/Debug/net6.0/Newtonsoft.Json.dll
+/Users/lenard/Documents/GitHub/fhir-client/bin/Debug/net6.0/SemVer.dll
+/Users/lenard/Documents/GitHub/fhir-client/bin/Debug/net6.0/ICSharpCode.SharpZipLib.dll
+/Users/lenard/Documents/GitHub/fhir-client/obj/Debug/net6.0/fhir-client.csproj.CopyComplete
