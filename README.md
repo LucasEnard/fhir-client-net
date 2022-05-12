@@ -147,12 +147,12 @@ Open `Client.cs` to start coding or using the autocompletion.
 
 ## 8.1. Dockerfile
 
-A dockerfile to create a dot net env for you to work on.
+A dockerfile to create a dot net env for you to work on.<br>
 Use `docker build .` to build and reopen your file in the container to work inside of it.
 
 ## 8.2. .vscode/settings.json
 
-Settings file to let you immedietly code in VSCode with [VSCode ObjectScript plugin](https://marketplace.visualstudio.com/items?itemName=daimor.vscode-objectscript))
+Settings file.
 
 ## 8.3. .vscode/launch.json
 Config file if you want to debug
