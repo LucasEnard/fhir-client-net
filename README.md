@@ -64,9 +64,7 @@ The first time you do this it may take several minutes while the container is re
 
 <br><br><br>
 
-By opening the folder remote you enable VS Code and any terminals you open within it to use the python components within the container. Configure these to use `/usr/irissys/bin/irispython`
-
-<img width="1614" alt="PythonInterpreter" src="https://user-images.githubusercontent.com/47849411/145864423-2de24aaa-036c-4beb-bda0-3a73fe15ccbd.png">
+By opening the folder remote you enable VS Code and any terminals you open within it to use the c# components within the container.
 
 # 4. FHIR server
 
