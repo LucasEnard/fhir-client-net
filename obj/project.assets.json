@@ -3366,23 +3366,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/lenard/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "/root/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/lenard/Documents/GitHub/fhir-client/fhir-client.csproj",
+      "projectUniqueName": "/workspaces/fhir-client/fhir-client.csproj",
       "projectName": "fhir-client",
-      "projectPath": "/Users/lenard/Documents/GitHub/fhir-client/fhir-client.csproj",
-      "packagesPath": "/Users/lenard/.nuget/packages/",
-      "outputPath": "/Users/lenard/Documents/GitHub/fhir-client/obj/",
+      "projectPath": "/workspaces/fhir-client/fhir-client.csproj",
+      "packagesPath": "/root/.nuget/packages/",
+      "outputPath": "/workspaces/fhir-client/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "/Users/lenard/.nuget/NuGet/NuGet.Config"
+        "/root/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -3430,7 +3426,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.200/RuntimeIdentifierGraph.json"
       }
     }
   }

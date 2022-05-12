@@ -1,6 +1,6 @@
 # 1. Fhir-client-net
 This is a simple fhir client in c# to practice with fhir resources and CRUD requests to a fhir server.<br>
-Note that for the most part auto-completion is activated, that's the main reason to use fhir.resources.
+Note that for the most part auto-completion is activated.
 
 
 - [1. Fhir-client-net](#1-fhir-client-net)
@@ -36,10 +36,8 @@ Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installi
 
 Clone/git pull the repo into any local directory e.g. like it is shown below:
 ```
-$ git clone https://github.com/LucasEnard/fhir-client.git
+$ git clone https://github.com/LucasEnard/fhir-client-net.git
 ```
-
-Go to the right branch, the dot net branch.
 
 Open the terminal in this directory and run:
 
@@ -50,7 +48,7 @@ $ docker build .
 
 This repository is ready for [VS Code](https://code.visualstudio.com/).
 
-Open the locally-cloned `fhir-client` folder in VS Code.
+Open the locally-cloned `fhir-client-net` folder in VS Code.
 
 If prompted (bottom right corner), install the recommended extensions.
 
@@ -109,7 +107,9 @@ In this part we create a Patient using Fhir.Model and we fill it with a HumanNam
 After that, we need to save our new Patient in our server using our client.
 
 Note that if you start `Client.cs` multiple times, multiple Patients having the name we choosed will be created.<br> This is because, following the FHIR convention you can have multiple Patient with the same name, only the `id` is unique on the server.<br>
-Check [the doc](https://docs.fire.ly/projects/Firely-NET-SDK/client/search.html#searching) for more information.
+Check [the doc](https://docs.fire.ly/projects/Firely-NET-SDK/client/search.html#searching) for more information.<br>
+It is to be noted that using SearchParams you can check if an equivalent resource already exists in the server before creating it.<br>
+For more information https://docs.fire.ly/projects/Firely-NET-SDK/client/crud.html
 
 Therefore we advise to comment the line after the first launch.
 
@@ -128,8 +128,16 @@ Then, we register using the create function our observation.
 
 ## 5.5. Conclusion of the walkthrough
 
-If you have followed this walkthrough you now know exactly what Client.cs does, you can start it using any python interpreter and check in your server your newly created Patient and Observation.
+If you have followed this walkthrough you now know exactly what Client.cs does, you can start it and check in your server your newly created Patient and Observation.
 
+To start it, open a VSCode terminal and enter :
+```
+dotnet run
+```
+You should see some information on the Patient we created and his observation.
+
+
+If you are using an Intersystems server, go to `API Deployement`, authorize yourself with the api key and from here you can GET by id the patient and the observation we just created.
 
 # 7. How to start coding
 This repository is ready to code in VSCode with InterSystems plugins.
@@ -139,12 +147,12 @@ Open `Client.cs` to start coding or using the autocompletion.
 
 ## 8.1. Dockerfile
 
-The simplest dockerfile to start IRIS.
-Use the related docker-compose.yml to easily setup additional parametes like port number and where you map keys and host folders.
+A dockerfile to create a dot net env for you to work on.
+Use `docker build .` to build and reopen your file in the container to work inside of it.
 
 ## 8.2. .vscode/settings.json
 
 Settings file to let you immedietly code in VSCode with [VSCode ObjectScript plugin](https://marketplace.visualstudio.com/items?itemName=daimor.vscode-objectscript))
 
 ## 8.3. .vscode/launch.json
-Config file if you want to debug with VSCode ObjectScript
+Config file if you want to debug

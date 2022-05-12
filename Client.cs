@@ -10,11 +10,13 @@ using Hl7.Fhir.Rest;
 var httpClient = new HttpClient();
 httpClient.DefaultRequestHeaders.Add("x-api-key", "sVgCTspDTM4iHGn51K5JsaXAwJNmHkSG3ehxindk");
 
+
 var settings = new FhirClientSettings
     {
         Timeout = 0,
         PreferredFormat = ResourceFormat.Json,
         VerifyFhirVersion = true,
+        // PreferredReturn can take Prefer.ReturnRepresentation or Prefer.ReturnMinimal to return the full resource or an empty payload
         PreferredReturn = Prefer.ReturnRepresentation
     };
 // Creation of our client using the right url
@@ -28,6 +30,8 @@ var patient0 = new Patient();
 patient0.Name.Add(new HumanName().WithGiven("GivenName").AndFamily("FamilyName"));
 
 // Creation of our client in the server
+// It is to be noted that using SearchParams you can check if an equivalent resource already exists in the server
+// For more information https://docs.fire.ly/projects/Firely-NET-SDK/client/crud.html
 var created_pat = client.Create<Patient>(patient0);
 
 Console.Write("Part 2 : Newly created patient id : ");
@@ -70,6 +74,7 @@ var update_pat = client.Update<Patient>(patient0);
 
 // Building of our new observation
 Observation obsv = new Observation {
+
     Value = new Quantity(70, "kg"),
     Code = new CodeableConcept {
         Coding = new List<Coding> {
@@ -95,7 +100,7 @@ Observation obsv = new Observation {
 
     };
 
-// Creation of our observatiob in the server
+// Creation of our observation in the server
 var new_obsv = client.Create<Observation>(obsv);
 
 Console.Write("Part 4 : Id of the observation : ");
