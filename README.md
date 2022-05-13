@@ -25,6 +25,9 @@ Note that for the most part auto-completion is activated.
 # 2. Prerequisites
 Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
 
+
+If you are working inside the container, those modules are already installed.<br>
+if you are not, use nugget to install `Hl7.Fhir.R4`, we will be using Model and Rest from it :<br>
 [Hl7.Fhir.Model](https://docs.fire.ly/projects/Firely-NET-SDK/model.html)
 
 [Hl7.Fhir.Rest](https://docs.fire.ly/projects/Firely-NET-SDK/client.html)
@@ -58,6 +61,8 @@ For this, docker must be on before opening VSCode.<br>
 Then, inside VSCode, when prompted (in the right bottom corner), reopen the folder inside the container so you will be able to use the python components within it.<br>
 The first time you do this it may take several minutes while the container is readied.
 
+If you don't have this option, you can click in the bottom left corner and `press reopen in container` then select `From Dockerfile`
+
 [More information here](https://code.visualstudio.com/docs/remote/containers)
 
 ![Architecture](https://code.visualstudio.com/assets/docs/remote/containers/architecture-containers.png)
@@ -65,6 +70,8 @@ The first time you do this it may take several minutes while the container is re
 <br><br><br>
 
 By opening the folder remote you enable VS Code and any terminals you open within it to use the c# components within the container.
+
+If prompted (bottom right corner), install the recommended extensions.
 
 # 4. FHIR server
 

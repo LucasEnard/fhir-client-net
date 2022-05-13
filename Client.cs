@@ -8,7 +8,7 @@ using Hl7.Fhir.Rest;
 
 // Creation of an htpclient holding the api key of the server as an header
 var httpClient = new HttpClient();
-httpClient.DefaultRequestHeaders.Add("x-api-key", "sVgCTspDTM4iHGn51K5JsaXAwJNmHkSG3ehxindk");
+httpClient.DefaultRequestHeaders.Add("x-api-key", "api-key");
 
 
 var settings = new FhirClientSettings
@@ -20,7 +20,7 @@ var settings = new FhirClientSettings
         PreferredReturn = Prefer.ReturnRepresentation
     };
 // Creation of our client using the right url
-var client = new FhirClient("https://fhir.8ty581k3dgzj.static-test-account.isccloud.io",httpClient,settings);
+var client = new FhirClient("url",httpClient,settings);
 
 //----------------------------------------------------------------------------------------------------------
 // Part 2
@@ -46,6 +46,8 @@ Console.WriteLine(created_pat.Id);
 // Get the patient by searching our server using the name of our patient
 
 // This gets all the Patient having the exact name "FamilyName" and we take the first one
+// Note that if you have multiple patients with the same name, you will get only the first one 
+// We advise to use the id, the names, and any other informations for the SearchParams to be sure to get the right patient
 var q = new SearchParams().Where("name:exact=FamilyName");
 Bundle bund = client.Search<Patient>(q);
 patient0 = bund.Entry[0].Resource as Patient;
