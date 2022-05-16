@@ -2,6 +2,7 @@
 This is a simple fhir client in c# to practice with fhir resources and CRUD requests to a fhir server.<br>
 Note that for the most part auto-completion is activated.
 
+[GitHub](https://github.com/LucasEnard/fhir-client-net)
 
 - [1. Fhir-client-net](#1-fhir-client-net)
 - [2. Prerequisites](#2-prerequisites)
@@ -56,7 +57,7 @@ Open the locally-cloned `fhir-client-net` folder in VS Code.
 If prompted (bottom right corner), install the recommended extensions.
 
 ## 3.3. Having the folder open inside the container
-You can be *inside* the container before coding.<br>
+You can be *inside* the container before coding if you wish.<br>
 For this, docker must be on before opening VSCode.<br>
 Then, inside VSCode, when prompted (in the right bottom corner), reopen the folder inside the container so you will be able to use the python components within it.<br>
 The first time you do this it may take several minutes while the container is readied.
@@ -91,12 +92,37 @@ The code is separated in multiple parts, and we will cover each of them below.
 ## 5.1. Part 1
 In this part we connect our client to our server using Fhir.Rest.
 
+```
+
+// Part 1
+
+// Creation of an htpclient holding the api key of the server as an header
+var httpClient = new HttpClient();
+httpClient.DefaultRequestHeaders.Add("x-api-key", "api-key");
+
+
+var settings = new FhirClientSettings
+    {
+        Timeout = 0,
+        PreferredFormat = ResourceFormat.Json,
+        VerifyFhirVersion = true,
+        // PreferredReturn can take Prefer.ReturnRepresentation or Prefer.ReturnMinimal to return the full resource or an empty payload
+        PreferredReturn = Prefer.ReturnRepresentation
+    };
+// Creation of our client using the right url
+var client = new FhirClient("url",httpClient,settings);
+
+```
+
 In order to connect to your server you need to change the line :
-```c#
+
+```
 httpClient.DefaultRequestHeaders.Add("x-api-key", "api-key");
 ```
+
 And this line :
-```c#
+
+```
 var client = new FhirClient("url",httpClient,settings);
 ```
 
@@ -108,6 +134,24 @@ Just like that, we have a FHIR client capable of direct exchange with our server
 
 ## 5.2. Part 2
 In this part we create a Patient using Fhir.Model and we fill it with a HumanName, following the FHIR convention, `use` and `family` are string and `given` is a list of string. The same way, a Patient can have multiple HumanNames so we have to put our HumanName in a list before puting it into our newly created Patient.
+
+```
+
+// Part 2
+
+// Building a new patient and setting the names
+var patient0 = new Patient();
+patient0.Name.Add(new HumanName().WithGiven("GivenName").AndFamily("FamilyName"));
+
+// Creation of our client in the server
+// It is to be noted that using SearchParams you can check if an equivalent resource already exists in the server
+// For more information https://docs.fire.ly/projects/Firely-NET-SDK/client/crud.html
+var created_pat = client.Create<Patient>(patient0);
+
+Console.Write("Part 2 : Newly created patient id : ");
+Console.WriteLine(created_pat.Id);
+
+```
 
 After that, we need to save our new Patient in our server using our client.
 
@@ -121,6 +165,38 @@ Therefore we advise to comment the line after the first launch.
 ## 5.3. Part 3
 In this part we get a client searching for a Patient named after the one we created earlier.
 
+```
+
+// Part 3
+
+// This gets all the Patient having the exact name "FamilyName" and we take the first one
+// Note that if you have multiple patients with the same name, you will get only the first one 
+// We advise to use the id, the names, and any other informations for the SearchParams to be sure to get the right patient
+var q = new SearchParams().Where("name:exact=FamilyName");
+Bundle bund = client.Search<Patient>(q);
+patient0 = bund.Entry[0].Resource as Patient;
+
+Console.Write("Part 3 : Name of the patient we found by searching : ");
+Console.WriteLine(patient0.Name[0]);
+
+
+// Creation of our patient telecom, here a phone number
+patient0.Telecom.Add(new ContactPoint(new ContactPoint.ContactPointSystem(),new ContactPoint.ContactPointUse(),"1234567890"));
+
+// Change the given name of our patient
+patient0.Name[0].Given = new List<string>() { "AnotherGivenName" };
+
+Console.Write("Part 3 : Name of the changed patient : ");
+Console.WriteLine(patient0.Name[0]);
+
+Console.Write("Part 3 : Phone of the changed patient : ");
+Console.WriteLine(patient0.Telecom[0].Value);
+
+// Update the patient
+var update_pat = client.Update<Patient>(patient0);
+
+```
+
 Once we found him, we add a phone number to his profile and we change his given name to another.
 
 Now we can use the update function of our client to update our patient in the server.
@@ -128,6 +204,46 @@ Now we can use the update function of our client to update our patient in the se
 ## 5.4. Part 4
 In this part we want to create an observation for our Patient from earlier, to do this we need his id, which is his unique identifier.<br>
 From here we fill our observation and add as the subject, the id of our Patient.
+
+```
+
+// Part 4
+
+// Building of our new observation
+Observation obsv = new Observation {
+
+    Value = new Quantity(70, "kg"),
+    Code = new CodeableConcept {
+        Coding = new List<Coding> {
+            new Coding {
+                System = "http://loinc.org",
+                Code = "29463-7",
+                Display = "Body weight"
+            }
+        }},
+    Category = new List<CodeableConcept> {
+        new CodeableConcept {
+            Coding = new List<Coding> {
+                new Coding {
+                    System = "http://snomed.info/sct",
+                    Code = "276327007",
+                    Display = "Body weight"
+                }
+            }
+        }},
+    Status = new ObservationStatus {},
+    Subject = new ResourceReference {
+        Reference = "Patient/" + update_pat.Id}
+
+    };
+
+// Creation of our observation in the server
+var new_obsv = client.Create<Observation>(obsv);
+
+Console.Write("Part 4 : Id of the observation : ");
+Console.WriteLine(new_obsv.Id);
+
+```
 
 Then, we register using the create function our observation.
 
