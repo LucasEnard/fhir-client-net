@@ -38,13 +38,13 @@ if you are not, use nugget to install `Hl7.Fhir.R4`, we will be using Model and 
 
 Clone/git pull the repo into any local directory e.g. like it is shown below:
 ```
-$ git clone https://github.com/LucasEnard/fhir-client-net.git
+git clone https://github.com/LucasEnard/fhir-client-net.git
 ```
 
 Open the terminal in this directory and run:
 
 ```
-$ docker build .
+docker build .
 ```
 ## 3.2. Management Portal and VSCode
 
