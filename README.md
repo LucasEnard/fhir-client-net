@@ -2,8 +2,6 @@
 This is a simple fhir client in c# to practice with fhir resources and CRUD requests to a fhir server.<br>
 Note that for the most part auto-completion is activated.
 
-[GitHub](https://github.com/LucasEnard/fhir-client-net)
-
 - [1. Fhir-client-net](#1-fhir-client-net)
 - [2. Prerequisites](#2-prerequisites)
 - [3. Installation](#3-installation)
